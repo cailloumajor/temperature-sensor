@@ -1,7 +1,1 @@
 BasedOnStyle: WebKit
-
-AlignConsecutiveAssignments: true
-AlignConsecutiveDeclarations: true
-AlignConsecutiveMacros: true
-AllowShortBlocksOnASingleLine: true
-BreakBeforeBraces: Attach
