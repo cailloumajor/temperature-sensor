@@ -54,7 +54,8 @@ float BME280HumiditySensor::getValue() const
     return _bme.readHumidity();
 };
 
-BME280Node::BME280Node(const char* id,
+BME280Node::BME280Node(
+    const char* id,
     const char* name,
     uint8_t i2c_addr,
     unsigned measurementInterval)

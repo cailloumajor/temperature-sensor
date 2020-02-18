@@ -13,8 +13,7 @@ BME280Node bmeNode("environment", "Environment sensor", I2C_ADDRESS, INTERVAL);
 void setup()
 {
     Serial.begin(115200);
-    Serial << endl
-           << endl;
+    Serial << endl << endl;
 
     Homie_setFirmware("temperature-sensor", FIRMWARE_VERSION);
 
