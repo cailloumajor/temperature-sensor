@@ -24,7 +24,7 @@ BME280TemperatureSensor::BME280TemperatureSensor(Adafruit_BME280& bme)
 float BME280TemperatureSensor::getValue() const
 {
     return _bme.readTemperature();
-};
+}
 
 BME280PressureSensor::BME280PressureSensor(Adafruit_BME280& bme)
     : BME280Sensor(bme)
@@ -38,7 +38,7 @@ BME280PressureSensor::BME280PressureSensor(Adafruit_BME280& bme)
 float BME280PressureSensor::getValue() const
 {
     return _bme.readPressure() / 100.0;
-};
+}
 
 BME280HumiditySensor::BME280HumiditySensor(Adafruit_BME280& bme)
     : BME280Sensor(bme)
@@ -52,7 +52,7 @@ BME280HumiditySensor::BME280HumiditySensor(Adafruit_BME280& bme)
 float BME280HumiditySensor::getValue() const
 {
     return _bme.readHumidity();
-};
+}
 
 BME280Node::BME280Node(
     const char* id,
