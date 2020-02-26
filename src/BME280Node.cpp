@@ -93,10 +93,12 @@ void BME280Node::loop()
 {
     unsigned long currentMillis = millis();
     if ((unsigned long)(currentMillis - _lastMeasurement) >= (_interval * 1000UL)) {
+        Homie.getLogger() << "🌡️ Sending BME280 measurements..." << endl;
         _bme.takeForcedMeasurement();
         for (const auto& s : _sensors) {
             float measure = s->getValue();
-            Homie.getLogger() << s->_name << ": " << measure << " " << s->_unit << endl;
+            Homie.getLogger() << "   • " << s->_name << ": " << measure << " "
+                              << s->_unit << endl;
             setProperty(s->_id).send(String(measure));
         }
         _lastMeasurement = millis();
