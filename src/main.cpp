@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Homie.h>
 
 #include "BME280Node.hpp"
 
