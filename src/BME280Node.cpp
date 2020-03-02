@@ -70,10 +70,11 @@ BME280Node::BME280Node(
 
 void BME280Node::setup()
 {
+    Homie.getLogger() << endl << "🚀 Initializing BME280...";
     if (!_bme.begin(_addr)) {
-        Helpers::abort(
-            F("✖ BME280Node::setup(): Could not find a valid BME280 sensor"));
+        Helpers::abort(F("\n  ✖ Could not find a valid BME280 sensor"));
     }
+    Homie.getLogger() << "OK!" << endl << endl;
     _bme.setSampling(
         Adafruit_BME280::MODE_FORCED,
         Adafruit_BME280::SAMPLING_X1,

@@ -3,7 +3,7 @@
 
 #include "BME280Node.hpp"
 
-#define FIRMWARE_VERSION "1.0.1"
+#define FIRMWARE_VERSION "1.0.2"
 
 const uint8_t I2C_ADDRESS = 0x76;
 const int INTERVAL = 60; // Measurement interval in seconds
