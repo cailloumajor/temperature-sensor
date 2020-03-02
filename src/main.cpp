@@ -7,7 +7,6 @@
 
 const uint8_t I2C_ADDRESS = 0x76;
 const int INTERVAL = 60; // Measurement interval in seconds
-unsigned long lastMillis = 0;
 
 BME280Node bmeNode("environment", "Environment sensor", I2C_ADDRESS, INTERVAL);
 
