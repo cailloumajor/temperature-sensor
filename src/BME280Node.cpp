@@ -19,6 +19,7 @@ BME280TemperatureSensor::BME280TemperatureSensor(Adafruit_BME280& bme)
     _name = "Temperature";
     _format = "0:65";
     _unit = "°C";
+    _decimals = 1;
 }
 
 float BME280TemperatureSensor::getValue() const
@@ -33,6 +34,7 @@ BME280PressureSensor::BME280PressureSensor(Adafruit_BME280& bme)
     _name = "Pressure";
     _format = "300:1100";
     _unit = "hPa";
+    _decimals = 0;
 }
 
 float BME280PressureSensor::getValue() const
@@ -47,6 +49,7 @@ BME280HumiditySensor::BME280HumiditySensor(Adafruit_BME280& bme)
     _name = "Humidity";
     _format = "0:100";
     _unit = "%";
+    _decimals = 1;
 }
 
 float BME280HumiditySensor::getValue() const
@@ -97,10 +100,10 @@ void BME280Node::loop()
         Homie.getLogger() << "🌡️ Sending BME280 measurements..." << endl;
         _bme.takeForcedMeasurement();
         for (const auto& s : _sensors) {
-            float measure = s->getValue();
-            Homie.getLogger() << "   • " << s->_name << ": " << measure << " "
+            String measure(s->getValue(), s->_decimals);
+            Homie.getLogger() << "  • " << s->_name << ": " << measure << " "
                               << s->_unit << endl;
-            setProperty(s->_id).send(String(measure));
+            setProperty(s->_id).send(measure);
         }
         _lastMeasurement = millis();
     }

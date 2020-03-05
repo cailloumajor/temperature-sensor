@@ -17,6 +17,7 @@ struct BME280Sensor {
     const char* _datatype = {};
     const char* _format = {};
     const char* _unit = {};
+    unsigned char _decimals = {};
 
     BME280Sensor(Adafruit_BME280& bme);
     virtual float getValue() const = 0;
