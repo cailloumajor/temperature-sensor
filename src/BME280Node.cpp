@@ -96,7 +96,8 @@ void BME280Node::setup()
 void BME280Node::loop()
 {
     unsigned long currentMillis = millis();
-    if ((unsigned long)(currentMillis - _lastMeasurement) >= (_interval * 1000UL)) {
+    if ((unsigned long)(currentMillis - _lastMeasurement) >= (_interval * 1000UL)
+        || (_lastMeasurement == 0 && Homie.isConnected())) {
         Homie.getLogger() << "🌡️ Sending BME280 measurements..." << endl;
         _bme.takeForcedMeasurement();
         for (const auto& s : _sensors) {
